@@ -1,0 +1,71 @@
+<form n:name="restForm" class="form-horizontal">
+    <div n:foreach="$form->getErrors() as $error" class="alert alert-danger" role="alert">{$error}</div>
+    <div class="panel panel-default">
+	<div class="panel-heading">Restaurant</div>
+	<div class="panel-body">
+	    <div class="form-group">
+		<label n:name="name" class="col-sm-1 control-label">Name</label>
+		<div class="col-sm-3">
+		    <input n:name="name" class="form-control">
+		</div>
+	    </div>
+	    <div class="form-group">
+		<label n:name="cuisine" class="col-sm-1 control-label">Cuisine</label>
+		<div class="col-sm-3">
+		    <input n:name="cuisine" class="form-control typeahead-cuisine" autocomplete="off">
+		</div>
+	    </div>  
+	</div>
+    </div>
+    <div class="panel panel-default">
+	<div class="panel-heading">Address</div>
+	<div class="panel-body">
+	    <div class="form-group">
+		<label n:name="address.building" class="col-sm-1 control-label">Building</label>
+		<div class="col-sm-3">
+		    <input n:name="address.building" class="form-control">
+		</div>
+	    </div>  
+	    <div class="form-group">
+		<label n:name="address.street" class="col-sm-1 control-label">Street</label>
+		<div class="col-sm-3">
+		    <input n:name="address.street" class="form-control">
+		</div>
+	    </div>  
+	    <div class="form-group">
+		<label n:name="borough" class="col-sm-1 control-label">Borough</label>
+		<div class="col-sm-3">
+		    <select n:name="borough" class="form-control"></select>
+		</div>
+	    </div>  
+	    <div class="form-group">
+		<label n:name="address.zipcode" class="col-sm-1 control-label">Zipcode</label>
+		<div class="col-sm-3">
+		    <input n:name="address.zipcode" class="form-control">
+		</div>
+	    </div>  
+	    <div class="form-group">
+		<label n:name="address.coord.0" class="col-sm-1 control-label">Coords</label>
+		<div class="col-sm-2">
+		    <div class="input-group">
+			<input n:name="address.coord.0" class="form-control" placeholder="latit.">
+			<div class="input-group-addon">N</div>
+		    </div>
+		</div>
+		<div class="col-sm-2">
+		    <div class="input-group">
+			<input n:name="address.coord.1" class="form-control" placeholder="longt.">
+			<div class="input-group-addon">W</div>
+		    </div>
+		</div>
+	    </div>
+	</div>
+    </div>
+    <input n:name="save" class="btn btn-default">
+</form>
+<script src="{$basePath}/js/bootstrap3-typeahead.min.js"></script>
+<script>
+$(function(){
+    $('.typeahead-cuisine').typeahead({ source: {$cuisine} });
+});
+</script>

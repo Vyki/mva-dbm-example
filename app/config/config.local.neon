@@ -1,0 +1,4 @@
+dbm:
+	driver: mongo
+	database: mva_test
+	client: MongoClient()

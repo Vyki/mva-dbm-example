@@ -1,0 +1,57 @@
+{**
+ * @param string   $basePath web base path
+ * @param array    $flashes  flash messages
+*}
+
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta charset="utf-8">
+
+	<title>{ifset title}{include title|striptags} | {/ifset}Mva\Dbm example</title>
+
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{$basePath}/css/style.css">
+	<link rel="shortcut icon" href="{$basePath}/favicon.ico">
+	<meta name="viewport" content="width=device-width">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="//nette.github.io/resources/js/netteForms.min.js"></script>
+	{block head}{/block}
+    </head>
+
+    <body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+	    <div class="container">
+		<div class="navbar-header">
+		    <a class="navbar-brand" n:href="Restaurant:default">NY restaurants</a>
+		</div>
+		<div id="navbar" class="collapse navbar-collapse">
+		    <ul class="nav navbar-nav">
+			<li><a n:href="Restaurant:">Complete list</a></li>
+			<li><a n:href="Restaurant:select borough">Find by borough</a></li>
+			<li><a n:href="Restaurant:select cuisine">Find by cuisine</a></li>
+			<li><a n:href="Restaurant:default name">Find by name</a></li>
+			<li><a n:href="Restaurant:add">New restaurant</a></li>
+		    </ul>
+		</div>
+	    </div>
+	</nav>
+
+	<div class="container">
+	    <div n:foreach="$flashes as $flash" n:class="alert, $flash->type ? 'alert-'.$flash->type">{$flash->message}</div>
+	    {include content}
+	</div>
+
+	<footer class="footer">
+	    <div class="container">
+		<div class="row">
+		    <p class="text-muted pull-right">Mva\Dbm example, Roman Vykuka 2015</p>
+		    <p class="text-muted"><a href="https://docs.mongodb.org/getting-started/shell/import-data"><img src="{$basePath}/img/MongoDB.png" alt="MongoDB" height="25"> MongoDB powered</a></p>
+		</div>
+	    </div>
+	</footer>
+	{block scripts}
+
+	{/block}
+    </body>
+</html>

@@ -1,0 +1,20 @@
+{block content}
+<div class="page-header">
+    <h1>List of restaurants</h1>
+</div>
+{if $fkey == 'name'}
+    <form n:name="searchForm" class="form-inline">
+	<div class="form-group">
+	    <input n:name="name" class="form-control" placeholder="rest. name">
+	</div>
+	<input n:name="search" class="btn btn-default">
+    </form>
+    <br>
+{elseif $fval}
+    <p n:if="$fval !== NULL">
+	<span class="glyphicon glyphicon-search"></span> Filter {$fkey}: {$fval}
+	<a class="glyphicon glyphicon-remove" n:href="select $fkey"></a>
+    </p>
+{/if}
+
+{control restaurantList}

@@ -1,0 +1,25 @@
+<p><span n:class="glyphicon, $count ? glyphicon-ok : glyphicon-remove"></span> Found: {(int) $count} items</p>
+<table class="table table-striped">
+    <thead>
+	<tr>
+	    <th>#ID</th>
+	    <th>Name</th>
+	    <th>Borough</th>
+	    <th>Cuisine</th>
+	    <th>&nbsp;</th>
+	    <th>&nbsp;</th>
+	</tr>
+    </thead>
+    <tbody>
+	<tr n:foreach="$restaurants as $rest">
+	    <td>{$rest->restaurant_id}</td>
+	    <td>{$rest->name}</td>
+	    <td>{$rest->borough}</td>
+	    <td>{$rest->cuisine}</td>
+	    <td><a href="{plink detail $rest->_id}"><span class="glyphicon glyphicon-search"></span></a></td>
+	    <td><a href="{plink edit $rest->_id}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+	    <td><a href="{plink delete! $rest->_id}"><span class="glyphicon glyphicon-trash"></span></a></td>
+	</tr>
+    </tbody>
+</table>
+{control vp}
